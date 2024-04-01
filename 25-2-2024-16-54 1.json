@@ -1,0 +1,1823 @@
+[
+  {
+    "Execution Details": [
+      {
+        "name": "DeviceInfo_Get_All_System_Info",
+        "data": {
+          "Test Case ID": "DI_01",
+          "Test Case Name": "DeviceInfo_Get_All_System_Info",
+          "Test Objective": "To Get the system general information",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5691,
+                "totalram": 2002913,
+                "freeram": 1835368,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "19",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:51 "
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 1
+        }
+      },
+      {
+        "name": "DeviceInfo_Get_All_Network_Interfaces",
+        "data": {
+          "Test Case ID": "DI_02",
+          "Test Case Name": "DeviceInfo_Get_All_Network_Interfaces",
+          "Test Objective": "To Get all network interface addresses",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.addresses",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "name": "lo",
+                "mac": "00:00:00:00:00:00",
+                "ip": [
+                  "127.0.0.1"
+                ]
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 2
+        }
+      },
+      {
+        "name": "DeviceInfo_Get_SocketInfo",
+        "data": {
+          "Test Case ID": "DI_03",
+          "Test Case Name": "DeviceInfo_Get_SocketInfo",
+          "Test Objective": "To Get the system socket information",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.socketinfo",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "runs": 22418
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 3
+        }
+      },
+      {
+        "name": "DeviceInfo_ActivateDeactivate_STRESS",
+        "data": {
+          "Test Case ID": "DI_04",
+          "Test Case Name": "DeviceInfo_ActivateDeactivate_STRESS",
+          "Test Objective": "To Activate and Deactivate the DeviceInfo plugin repeatedly and check CPU load",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "Controller.1.status@DeviceInfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "callsign": "DeviceInfo",
+                "locator": "libWPEFrameworkDeviceInfo.so",
+                "classname": "DeviceInfo",
+                "autostart": true,
+                "configuration": {
+                  "root": {
+                    "mode": "Off"
+                  }
+                },
+                "state": [
+                  "activated",
+                  "deactivated",
+                  "suspended",
+                  "resume",
+                  "unavailable"
+                ],
+                "observers": 0,
+                "module": "Plugin_DeviceInfo",
+                "hash": "engineering_build_for_debug_purpose_only",
+                "major": 1,
+                "minor": 0,
+                "patch": 5
+              },
+              "Api Response": {
+                "callsign": "DeviceInfo",
+                "locator": "libWPEFrameworkDeviceInfo.so",
+                "classname": "DeviceInfo",
+                "autostart": true,
+                "configuration": {
+                  "root": {
+                    "mode": "Off"
+                  }
+                },
+                "state": "activated",
+                "observers": 0,
+                "module": "Plugin_DeviceInfo",
+                "hash": "engineering_build_for_debug_purpose_only",
+                "major": 1,
+                "minor": 0,
+                "patch": 5
+              },
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5691,
+                "totalram": 2002913,
+                "freeram": 1835368,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "19",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:51 "
+              },
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 5 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 6,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 6 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 7,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5691,
+                "totalram": 2002913,
+                "freeram": 1835368,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 7 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 8,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 8 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 9,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 9 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 10,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5692,
+                "totalram": 2002913,
+                "freeram": 1835366,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 10 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 11,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 11 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 12,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 12 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 13,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5692,
+                "totalram": 2002913,
+                "freeram": 1835366,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 13 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 14,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 14 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 15,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 15 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 16,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5692,
+                "totalram": 2002913,
+                "freeram": 1835366,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 16 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 17,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 17 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 18,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 18 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 19,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5692,
+                "totalram": 2002913,
+                "freeram": 1835358,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 19 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 20,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 20 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 21,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 21 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 22,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5692,
+                "totalram": 2002913,
+                "freeram": 1835374,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 22 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 23,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 23 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 24,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 24 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 25,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5692,
+                "totalram": 2002913,
+                "freeram": 1835376,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "21",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:52 "
+              },
+              "Step 25 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 26,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 26 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 27,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 27 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 28,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5693,
+                "totalram": 2002913,
+                "freeram": 1835413,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "14",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:53 "
+              },
+              "Step 28 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 29,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 29 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 30,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 30 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 31,
+              "API": "DeviceInfo.1.systeminfo",
+              "Input Parameters": "",
+              "Expected Output": {
+                "cpuload": 90
+              },
+              "Api Response": {
+                "version": "2.1.#R2-v1.12",
+                "uptime": 5693,
+                "totalram": 2002913,
+                "freeram": 1835413,
+                "totalswap": 0,
+                "freeswap": 0,
+                "devicename": "raspberrypi4-64-rdk-android-mc",
+                "cpuload": "14",
+                "cpuloadavg": {
+                  "avg1min": 138528,
+                  "avg5min": 121760,
+                  "avg15min": 116576
+                },
+                "serialnumber": "OE2DrdE4wp",
+                "time": "Thu, 28 Mar 2024 11:25:53 "
+              },
+              "Step 31 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 32,
+              "API": "Controller.1.deactivate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 32 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 33,
+              "API": "Controller.1.activate",
+              "Input Parameters": {
+                "callsign": "DeviceInfo"
+              },
+              "Expected Output": null,
+              "Step 33 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 4
+        }
+      },
+      {
+        "name": "DeviceInfo_Get_Serial_Number",
+        "data": {
+          "Test Case ID": "DI_05",
+          "Test Case Name": "DeviceInfo_Get_Serial_Number",
+          "Test Objective": "To Get the serial number of the test device",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.serialnumber",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "serialnumber": "100000003ef226e5"
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 5
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_Model_Name",
+        "data": {
+          "Test Case ID": "DI_06",
+          "Test Case Name": "DeviceInfo_Check_Model_Name",
+          "Test Objective": "Checks the model name of the DUT",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "SYSTEM_DEVICE_DETAILS_FILE_PATH Should be updated in device config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "Command": "grep FRIENDLY_ID /etc/device.properties | cut -d'=' -f2- | xargs",
+              "Expected Output": "RPI",
+              "Command Output": "RPI\n",
+              "Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "DeviceInfo.1.modelname",
+              "Input Parameters": "",
+              "Expected Output": {
+                "model": "RPI"
+              },
+              "Api Response": {
+                "model": "RPI"
+              },
+              "Step 2 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 6
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_Firmware_Version",
+        "data": {
+          "Test Case ID": "DI_07",
+          "Test Case Name": "DeviceInfo_Check_Firmware_Version",
+          "Test Objective": "Checks the firmware version of the DUT",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.firmwareversion",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "imagename": "rdk-generic-mediaclient-wpe-image_FBT_6.0.0-rc4_20231108131757",
+                "yocto": "dunfell"
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 7
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_Supported_Audio_Ports",
+        "data": {
+          "Test Case ID": "DI_08",
+          "Test Case Name": "DeviceInfo_Check_Supported_Audio_Ports",
+          "Test Objective": "Check whether DUT lists supported audio ports",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "SUPPORTED_AUDIO_PORTS should be configured in the device specific configuration file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.supportedaudioports",
+              "Input Parameters": "",
+              "Expected Output": {
+                "supportedAudioPorts": [
+                  "HDMI0",
+                  "SPDIF0",
+                  "IDLR0",
+                  "SPEAKER0"
+                ]
+              },
+              "Api Response": {
+                "supportedAudioPorts": [
+                  "HDMI0"
+                ]
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 8
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_Supported_Video_Displays",
+        "data": {
+          "Test Case ID": "DI_09",
+          "Test Case Name": "DeviceInfo_Check_Supported_Video_Displays",
+          "Test Objective": "Check whether settop displays supported video displays",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "SUPPORTED_VIDEO_DISPLAYS should be configured in the device specific configuration file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "DeviceInfo.1.supportedvideodisplays",
+              "Input Parameters": "",
+              "Expected Output": {
+                "supportedVideoDisplays": [
+                  "HDMI0"
+                ]
+              },
+              "Api Response": {
+                "supportedVideoDisplays": [
+                  "HDMI0"
+                ]
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 9
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_Host_EDID",
+        "data": {
+          "Test Case ID": "DI_10",
+          "Test Case Name": "DeviceInfo_Check_Host_EDID",
+          "Test Objective": "Check the EDID status of host",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "org.rdk.DisplaySettings.1.readHostEDID",
+              "Input Parameters": "",
+              "Expected Output": {
+                "EDID": "dW5rbm93bg==",
+                "success": true
+              },
+              "Api Response": {
+                "EDID": "dW5rbm93bg==",
+                "success": true
+              },
+              "Step 1 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 10
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_Default_Resolution",
+        "data": {
+          "Test Case ID": "DI_11",
+          "Test Case Name": "DeviceInfo_Check_Default_Resolution",
+          "Test Objective": "Checks whether the default resolution is available in supported resolutions",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "org.rdk.DisplaySettings.1.getConnectedVideoDisplays",
+              "Input Parameters": "",
+              "Expected Output": {
+                "connectedVideoDisplays": [
+                  "HDMI0"
+                ],
+                "success": true
+              },
+              "Api Response": {
+                "connectedVideoDisplays": [
+                  "HDMI0"
+                ],
+                "success": true
+              },
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "DeviceInfo.1.supportedresolutions",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "supportedResolutions": [
+                  "720p",
+                  "1080p60"
+                ]
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "DeviceInfo.1.defaultresolution",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": {
+                "defaultResolution": "720p"
+              },
+              "Step 3 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 11
+        }
+      },
+      {
+        "name": "DeviceInfo_Check_supported_HDCP_Version",
+        "data": {
+          "Test Case ID": "DI_12",
+          "Test Case Name": "DeviceInfo_Check_supported_HDCP_Version",
+          "Test Objective": "Check the supported HDCP version",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "DEVICEINFO_SUPPORTED_HDCP_VERSION should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "org.rdk.DisplaySettings.1.getConnectedVideoDisplays",
+              "Expected Output": {
+                "connectedVideoDisplays": [
+                  "HDMI0"
+                ],
+                "success": true
+              },
+              "Api Response": {
+                "connectedVideoDisplays": [
+                  "HDMI0"
+                ],
+                "success": true
+              },
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "org.rdk.HdcpProfile.getSettopHDCPSupport",
+              "Input Parameters": "1.4",
+              "Expected Output": {
+                "supportedHDCPVersion": "1.4",
+                "isHDCPSupported": true,
+                "success": true
+              },
+              "Api Response": {
+                "supportedHDCPVersion": "1.4",
+                "isHDCPSupported": true,
+                "success": true
+              },
+              "Step 2 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 12
+        }
+      },
+      {
+        "name": "WebkitBrowser_SetAndGet_URL",
+        "data": {
+          "Test Case ID": "WEB_01",
+          "Test Case Name": "WebkitBrowser_SetAndGet_URL",
+          "Test Objective": "To Launch the given URL in the WebKitBrowser and verify the loadfinished event on loading the URL",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 1
+        }
+      },
+      {
+        "name": "WebkitBrowser_Toggle_Visibility",
+        "data": {
+          "Test Case ID": "WEB_02",
+          "Test Case Name": "WebkitBrowser_Toggle_Visibility",
+          "Test Objective": "Check if able to toggle the current browser visibility and also verify the visibilitychange event on changing the browser visibility",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.visibility",
+              "Expected Output": [
+                "visible",
+                "hidden"
+              ],
+              "Api Response": "visible",
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "API": "WebKitBrowser.1.visibility",
+              "Input Parameters": "hidden",
+              "Expected Output": null,
+              "Step 5 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 6,
+              "Notification": "client.events.1.visibilitychange",
+              "Expected Output": {
+                "hidden": true,
+                "success": true
+              },
+              "Notification Data": {
+                "hidden": true
+              },
+              "Step 6 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 7,
+              "API": "WebKitBrowser.1.visibility",
+              "Expected Output": [
+                "visible",
+                "hidden"
+              ],
+              "Api Response": "hidden",
+              "Step 7 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 8,
+              "API": "WebKitBrowser.1.visibility",
+              "Input Parameters": "visible",
+              "Expected Output": null,
+              "Step 8 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 9,
+              "API": "WebKitBrowser.1.visibility",
+              "Expected Output": [
+                "visible",
+                "hidden"
+              ],
+              "Api Response": "visible",
+              "Step 9 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 2
+        }
+      },
+      {
+        "name": "WebkitBrowser_Check_FPS",
+        "data": {
+          "Test Case ID": "WEB_03",
+          "Test Case Name": "WebkitBrowser_Check_FPS",
+          "Test Objective": "Verifies the FPS value by launching graphics URL",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_FPS_REPEAT_COUNT,WEBKIT_GRAPHICS_URL,WEBKIT_EXPECTED_FPS and WEBKIT_THRESHOLD_FPS should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "LightningApp.1.url",
+              "Expected Output": {},
+              "Step 1 Result": "FAILURE"
+            }
+          ],
+          "Test Case Result": "FAILURE",
+          "Serial Number": 3
+        }
+      },
+      {
+        "name": "WebkitBrowser_Change_Cookie_Accept_Policy",
+        "data": {
+          "Test Case ID": "WEB_04",
+          "Test Case Name": "WebkitBrowser_Change_Cookie_Accept_Policy",
+          "Test Objective": "Check if able to change the http cookie accept policy.",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.httpcookieacceptpolicy",
+              "Expected Output": [
+                "always",
+                "never",
+                "onlyfrommaindocumentdomain",
+                "exclusivelyfrommaindocumentdomain"
+              ],
+              "Api Response": "onlyfrommaindocumentdomain",
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "API": "WebKitBrowser.1.httpcookieacceptpolicy",
+              "Input Parameters": "always",
+              "Expected Output": null,
+              "Step 5 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 6,
+              "API": "WebKitBrowser.1.httpcookieacceptpolicy",
+              "Expected Output": "always",
+              "Api Response": "always",
+              "Step 6 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 7,
+              "API": "WebKitBrowser.1.httpcookieacceptpolicy",
+              "Input Parameters": "onlyfrommaindocumentdomain",
+              "Expected Output": null,
+              "Step 7 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 8,
+              "API": "WebKitBrowser.1.httpcookieacceptpolicy",
+              "Expected Output": "onlyfrommaindocumentdomain",
+              "Api Response": "onlyfrommaindocumentdomain",
+              "Step 8 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 4
+        }
+      },
+      {
+        "name": "WebkitBrowser_Toggle_Local_Storage_Enabled_Status",
+        "data": {
+          "Test Case ID": "WEB_05",
+          "Test Case Name": "WebkitBrowser_Toggle_Local_Storage_Enabled_Status",
+          "Test Objective": "Check if able to toggle local storage availability status ",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.localstorageenabled",
+              "Expected Output": [
+                true,
+                false
+              ],
+              "Api Response": true,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "WebKitBrowser.1.localstorageenabled",
+              "Input Parameters": "",
+              "Expected Output": null,
+              "Api Response": true,
+              "Step 2 Result": "FAILURE",
+              "Reason": {
+                "reason": "Type mismatch at root: object !== boolean",
+                "status": false
+              }
+            }
+          ],
+          "Test Case Result": "FAILURE",
+          "Serial Number": 5
+        }
+      },
+      {
+        "name": "WebkitBrowser_SetAndGet_Preferred_Languages",
+        "data": {
+          "Test Case ID": "WEB_06",
+          "Test Case Name": "WebkitBrowser_SetAndGet_Preferred_Languages",
+          "Test Objective": "Check if able to set and get the user preferred languages",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.languages",
+              "Input Parameters": [
+                "en",
+                "en-US"
+              ],
+              "Expected Output": null,
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "languages": [
+                  "en",
+                  "en-US"
+                ]
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 5 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 6
+        }
+      },
+      {
+        "name": "WebkitBrowser_SetAndGet_Invalid_URL",
+        "data": {
+          "Test Case ID": "WEB_07",
+          "Test Case Name": "WebkitBrowser_SetAndGet_Invalid_URL",
+          "Test Objective": "Verifies loadfailed event by launching invalid URL in the browser",
+          "Test Type": "Negative",
+          "TestCase Prerequisites": "WEBKIT_TEST_INVALID_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.tdk-page-test.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfailed",
+              "Expected Output": {
+                "url": "https://www.tdk-page-test.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.tdk-page-test.com/"
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.tdk-page-test.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "FAILURE",
+              "Reason": {
+                "reason": "Value mismatch at root: https://www.tdk-page-test.com/ !== https://www.google.com/",
+                "status": false
+              }
+            }
+          ],
+          "Test Case Result": "FAILURE",
+          "Serial Number": 7
+        }
+      },
+      {
+        "name": "WebkitBrowser_Change_Browser_URLs",
+        "data": {
+          "Test Case ID": "WEB_08",
+          "Test Case Name": "WebkitBrowser_Change_Browser_URLs",
+          "Test Objective": "Verifies urlchange event by launching different URLs in the browser",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL and WEBKIT_TEST_URL_1 should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://translate.google.co.in/",
+              "Expected Output": null,
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://translate.google.co.in/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 5 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 6,
+              "Notification": "client.events.1.urlchange",
+              "Expected Output": {
+                "url": "https://translate.google.co.in/",
+                "loaded": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "loaded": false
+              },
+              "Step 6 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 7,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://translate.google.co.in/",
+              "Api Response": "https://translate.google.co.in/",
+              "Step 7 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 8,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 8 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 9,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 9 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 10,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 10 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 8
+        }
+      },
+      {
+        "name": "WebkitBrowser_SetAndGet_UserAgent",
+        "data": {
+          "Test Case ID": "WEB_09",
+          "Test Case Name": "WebkitBrowser_SetAndGet_UserAgent",
+          "Test Objective": "Check if able to set and get the useragent string used by the browser",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.useragent",
+              "Input Parameters": "",
+              "Expected Output": "NOT_EMPTY",
+              "Api Response": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 WPE/1.0",
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "WebKitBrowser.1.useragent",
+              "Input Parameters": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 WPE/1.0",
+              "Expected Output": null,
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.useragent",
+              "Input Parameters": "",
+              "Expected Output": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 WPE/1.0",
+              "Api Response": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 WPE/1.0",
+              "Step 3 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 9
+        }
+      },
+      {
+        "name": "WebkitBrowser_SuspendAndResume",
+        "data": {
+          "Test Case ID": "WEB_10",
+          "Test Case Name": "WebkitBrowser_SuspendAndResume",
+          "Test Objective": "Verify statechange event by changing webkitbrowser plugin state",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.state",
+              "Input Parameters": "suspended",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.statechange",
+              "Expected Output": {
+                "suspended": true
+              },
+              "Notification Data": {
+                "suspended": true
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.state",
+              "Input Parameters": "",
+              "Expected Output": "suspended",
+              "Api Response": "suspended",
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.state",
+              "Input Parameters": "resumed",
+              "Expected Output": null,
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "Notification": "client.events.1.statechange",
+              "Expected Output": {
+                "suspended": false
+              },
+              "Notification Data": {
+                "suspended": false
+              },
+              "Step 5 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 6,
+              "API": "WebKitBrowser.1.state",
+              "Input Parameters": "",
+              "Expected Output": "resumed",
+              "Api Response": "resumed",
+              "Step 6 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 10
+        }
+      },
+      {
+        "name": "WebkitBrowser_SetAndGet_Headers",
+        "data": {
+          "Test Case ID": "WEB_11",
+          "Test Case Name": "WebkitBrowser_SetAndGet_Headers",
+          "Test Objective": "Check if able to set and get the userAgent browser header",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.headers",
+              "Input Parameters": [
+                {
+                  "name": "X-Forwarded-For",
+                  "value": "::1"
+                }
+              ],
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "WebKitBrowser.1.headers",
+              "Input Parameters": "",
+              "Expected Output": {
+                "name": "X-Forwarded-For",
+                "value": "::1"
+              },
+              "Api Response": {
+                "name": "X-Forwarded-For",
+                "value": "::1"
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 5 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 11
+        }
+      },
+      {
+        "name": "WebkitBrowser_Reload_URL",
+        "data": {
+          "Test Case ID": "WEB_12",
+          "Test Case Name": "WebkitBrowser_Reload_URL",
+          "Test Objective": "Checks the reload functionality in the browser with the given URL ",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "WEBKIT_TEST_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.google.com/",
+              "Expected Output": null,
+              "Step 4 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 5,
+              "Notification": "client.events.1.loadfinished",
+              "Expected Output": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200,
+                "success": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "httpstatus": 200
+              },
+              "Step 5 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 6,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 6 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 12
+        }
+      },
+      {
+        "name": "WebkitBrowser_Check_URL_Change_Event_For_Invalid_URL",
+        "data": {
+          "Test Case ID": "WEB_13",
+          "Test Case Name": "WebkitBrowser_Check_URL_Change_Event_For_Invalid_URL",
+          "Test Objective": "Verifies url change event by launching invalid URL in the browser",
+          "Test Type": "Negative",
+          "TestCase Prerequisites": "WEBKIT_TEST_INVALID_URL should be configured in the device specific config file",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.google.com/",
+              "Api Response": "https://www.google.com/",
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "https://www.tdk-page-test.com/",
+              "Expected Output": null,
+              "Step 2 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 3,
+              "Notification": "client.events.1.urlchange",
+              "Expected Output": {
+                "url": "https://www.tdk-page-test.com/",
+                "loaded": true
+              },
+              "Notification Data": {
+                "url": "https://www.google.com/",
+                "loaded": true
+              },
+              "Step 3 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 4,
+              "API": "WebKitBrowser.1.url",
+              "Input Parameters": "",
+              "Expected Output": "https://www.tdk-page-test.com/",
+              "Api Response": "https://www.tdk-page-test.com/",
+              "Step 4 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 13
+        }
+      },
+      {
+        "name": "UserPreferences_SetAndGet_UI_Language",
+        "data": {
+          "Test Case ID": "UP_01",
+          "Test Case Name": "UserPreferences_SetAndGet_UI_Language",
+          "Test Objective": "Check if able to set and get the user preferred UI language",
+          "Test Type": "Positive",
+          "TestCase Prerequisites": "None",
+          "Test steps": [
+            {
+              "Step Number": 1,
+              "API": "org.rdk.UserPreferences.1.setUILanguage",
+              "Input Parameters": {
+                "ui_language": "US_en"
+              },
+              "Expected Output": {
+                "success": true
+              },
+              "Api Response": {
+                "success": true
+              },
+              "Step 1 Result": "SUCCESS"
+            },
+            {
+              "Step Number": 2,
+              "API": "org.rdk.UserPreferences.1.getUILanguage",
+              "Expected Output": {
+                "ui_language": "US_en",
+                "success": true
+              },
+              "Api Response": {
+                "ui_language": "US_en",
+                "success": true
+              },
+              "Step 2 Result": "SUCCESS"
+            }
+          ],
+          "Test Case Result": "SUCCESS",
+          "Serial Number": 1
+        }
+      }
+    ]
+  },
+  {
+    "Device Details": {
+      "Device Name": "raspberrypi4-64-rdk-android-mc",
+      "IP Address": "192.168.51.233",
+      "Image Name": "rdk-generic-mediaclient-wpe-image_FBT_6.0.0-rc4_20231108131757",
+      "Yocto Version": "dunfell",
+      "Uptime": "5648 sec"
+    }
+  },
+  {
+    "Execution Time": "12.454 sec"
+  },
+  {
+    "Summary Data": {
+      "TOTAL": 26,
+      "Passed": 23,
+      "Failed": 3,
+      "NA": 0
+    }
+  },
+  {
+    "Chart Data": [
+      {
+        "Module": "DeviceInfo",
+        "Passed": 12,
+        "Failed": 0,
+        "NA": 0,
+        "Total": 12
+      },
+      {
+        "Module": "WebKitBrowser",
+        "Passed": 10,
+        "Failed": 3,
+        "NA": 0,
+        "Total": 13
+      },
+      {
+        "Module": "UserPreferences",
+        "Passed": 1,
+        "Failed": 0,
+        "NA": 0,
+        "Total": 1
+      }
+    ]
+  },
+  {
+    "SummaryTableData": [
+      {
+        "Plugin": "DeviceInfo",
+        "Passed": [
+          "DeviceInfo_Get_All_System_Info",
+          "DeviceInfo_Get_All_Network_Interfaces",
+          "DeviceInfo_Get_SocketInfo",
+          "DeviceInfo_ActivateDeactivate_STRESS",
+          "DeviceInfo_Get_Serial_Number",
+          "DeviceInfo_Check_Model_Name",
+          "DeviceInfo_Check_Firmware_Version",
+          "DeviceInfo_Check_Supported_Audio_Ports",
+          "DeviceInfo_Check_Supported_Video_Displays",
+          "DeviceInfo_Check_Host_EDID",
+          "DeviceInfo_Check_Default_Resolution",
+          "DeviceInfo_Check_supported_HDCP_Version"
+        ],
+        "Failed": "None",
+        "NA": "None"
+      },
+      {
+        "Plugin": "WebKitBrowser",
+        "Passed": [
+          "WebkitBrowser_SetAndGet_URL",
+          "WebkitBrowser_Toggle_Visibility",
+          "WebkitBrowser_Change_Cookie_Accept_Policy",
+          "WebkitBrowser_SetAndGet_Preferred_Languages",
+          "WebkitBrowser_Change_Browser_URLs",
+          "WebkitBrowser_SetAndGet_UserAgent",
+          "WebkitBrowser_SuspendAndResume",
+          "WebkitBrowser_SetAndGet_Headers",
+          "WebkitBrowser_Reload_URL",
+          "WebkitBrowser_Check_URL_Change_Event_For_Invalid_URL"
+        ],
+        "Failed": [
+          "WebkitBrowser_Check_FPS",
+          "WebkitBrowser_Toggle_Local_Storage_Enabled_Status",
+          "WebkitBrowser_SetAndGet_Invalid_URL"
+        ],
+        "NA": "None"
+      },
+      {
+        "Plugin": "UserPreferences",
+        "Passed": [
+          "UserPreferences_SetAndGet_UI_Language"
+        ],
+        "Failed": "None",
+        "NA": "None"
+      }
+    ]
+  }
+]

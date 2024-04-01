@@ -1,0 +1,662 @@
+body {
+    background: #F6F6F6 0% 0% no-repeat padding-box !important;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+h3{
+    font-size: 1rem;
+}
+.header {
+    background: transparent linear-gradient(90deg, #6C82D8 0%, #5F4BB3 53%, #2D4592 100%) 0% 0% no-repeat padding-box;
+    padding: 1rem 1rem !important;
+}
+
+.box_text {
+    color: #FBFBFB;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+}
+
+.row.boxes-container {
+    margin: 15px 0;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.box {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.device-info-title {
+    margin-bottom: 5px;
+    margin-top: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+.device-details-box .left {
+    padding: 0 15px 0 0;
+}
+
+.device-details-box p {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 0.65rem;
+    color: #2b2b2b;
+}
+
+span.lable {
+    font-weight: bold;
+}
+
+span.lable-text {
+    padding-left: 5px;
+}
+
+.centered {
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 0 20px 0;
+}
+
+.centered p {
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+h3.move-left {
+    float: left;
+}
+
+.column-right {
+    margin-top: 25px;
+}
+
+#myStackedBarChartCount select#barsPerPageSelect {
+    border: 1px solid #8E8A8A;
+    padding: 5px 10px;
+    width: 150px;
+}
+
+.column-right {
+    display: flex;
+    float: right;
+}
+
+.datetime {
+    font-size: 0.75rem;
+    padding-top: 5px;
+    margin-left: 10px;
+}
+
+#pieChartBox canvas {
+    display: block;
+    margin: auto;
+}
+
+.plugins {
+    display: flex;
+    float: right;
+    margin: 10px 0 15px;
+}
+
+.plugins h3 {
+    margin: 0;
+}
+
+.services-select {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.outer-box {
+    height: 360px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 1208px;
+
+}
+
+.tc-tab {
+    width: 325px;
+    margin-right: 15px;
+}
+
+.tc-tab h3 {
+    margin-top: 0px;
+}
+
+.tc-box {
+    background: #F9F9F9 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 3px #00000029;
+    border-radius: 12px;
+    height: 310px;
+    overflow: auto;
+}
+
+.tc-box button {
+    font-size: 0.75rem;
+    display: list-item;
+    width: 100%;
+    text-align: left;
+    border: none;
+    padding: 7px 15px;
+    background: none;
+}
+
+.tc-box button.active {
+    background: #dddddd;
+}
+
+.tc-box button.success {
+    color: #5BC866;
+}
+
+.tc-box button.failed {
+    color: #F87878;
+}
+
+.dtabcontent .tc-tab {
+    display: inline-grid;
+}
+
+.tc-box.details p, .tc-box.testcase-steps p {
+    margin: 0 0 5px 0;
+    font-size: 0.85rem;
+}
+
+.tc-box.details, .tc-box.testcase-steps {
+    padding: 15px;
+    height: 310px;
+}
+span.left {
+    width: 145px;
+    display: inline-block;
+}
+.tc-tab.last {
+    margin-right: 0;
+    width: 522px;
+}
+.tc-box.testcase-steps table {
+    width: 320px;
+    margin-left: 155px;
+    margin-top: -20px;
+}
+.full-width-button {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 5px;
+
+}
+/*
+
+.inner-box table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    height: 30px;
+}
+
+.inner-box td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 1px;
+    width: auto;
+    height: 40px;
+}
+*/
+table {
+    border-collapse: collapse;
+    background: #fefefe;
+}
+
+th,
+td {
+    border: 1px solid #E3E3E3;
+    padding: 8px;
+    text-align: center;
+}
+
+th:not(:last-child),
+td:not(:last-child) {
+    border-right: 1px solid #E3E3E3;
+}
+
+tr:not(:last-child) td {
+    border-bottom: 1px solid #E3E3E3;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+}
+
+#Execution_Details,
+#Test_Case_Details,
+#Detailed_View {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 1px #00000029;
+    border-radius: 0 12px 12px 12px;
+    padding-bottom: 10px;
+}
+
+#Test_Case_Details {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+/* responsive css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.navbar {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*@media (min-width: 768px){*/
+@media (min-width: 400px) {
+    img.logo {
+        left: 20px;
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    canvas#pieChart {
+        max-width: 165px;
+        max-height: 100px;
+        margin-top: 2px;
+    }
+
+    .device-details-box .right {
+        padding: 0;
+        border-left: none;
+    }
+
+    .col-md-3,
+    .col-md-12 {
+        margin-top: 15px;
+    }
+
+    .col-md-12.col-lg-5 {
+        margin-top: 0;
+    }
+
+    .col-md-3,
+    .col-md-4,
+    .col-md-8,
+    .col-md-12,
+    .col-lg-1,
+    .col-lg-2,
+    .col-lg-4,
+    .col-lg-5,
+    .col-lg-8 {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        transition: 0.3s;
+        background-color: #eee;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 15px;
+        font-size: 0.70rem;
+    }
+
+    .tablinks.last::after {
+        transition: 0.3s;
+        border-bottom: 41px solid #eee;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 15px;
+    }
+
+    .tablinks.active::after {
+        transition: 0.3s;
+        border-bottom: 41px solid #fff;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 15px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        background-color: #ddd;
+    }
+
+    .tab button:hover::after {
+        border-bottom: 41px solid #ddd;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 15px;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+        background-color: #fff;
+    }
+
+    .tab button.active::after {
+        border-bottom: 41px solid #fff;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 15px;
+    }
+
+}
+
+@media (min-width: 576px) {
+    .device-details-box .right {
+        padding: 0 0 0 15px;
+        border-left: 1px solid #E3E3E3;
+    }
+
+    canvas#pieChart {
+        max-width: 165px;
+        max-height: 100px;
+        margin-top: 2px;
+    }
+
+    .col-md-12 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 15px;
+    }
+
+    .col-md-12.box1 {
+        margin-top: 0px;
+    }
+
+    .col-md-8 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 60.666667%;
+        flex: 0 0 60.666667%;
+        max-width: 60.666667%;
+    }
+
+    .col-md-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 39.333333%;
+        flex: 0 0 39.333333%;
+        max-width: 39.333333%;
+    }
+
+    .col-md-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24.077779%;
+        flex: 0 0 24.077779%;
+        max-width: 24.077779%;
+        margin-top: 15px;
+    }
+
+    .col-md-3.box2 {
+        margin-right: 1.222223%;
+    }
+
+    .col-lg-1.box2.no-rm {
+        margin-right: 0;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        transition: 0.3s;
+        background-color: #eee;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 25px;
+        font-size: 0.75rem;
+    }
+
+    .tablinks.last::after {
+        transition: 0.3s;
+        border-bottom: 42px solid #eee;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 25px;
+    }
+
+    .tablinks.active::after {
+        transition: 0.3s;
+        border-bottom: 42px solid #fff;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 25px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        background-color: #ddd;
+    }
+
+    .tab button:hover::after {
+        border-bottom: 42px solid #ddd;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 25px;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+        background-color: #fff;
+    }
+
+    .tab button.active::after {
+        border-bottom: 42px solid #fff;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 25px;
+    }
+}
+
+@media (min-width: 992px) {
+    img.logo {
+        position: absolute;
+        left: 20px;
+        width: 130px;
+    }
+
+    .box3#pieChartBox {
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: center;
+    }
+
+    canvas#pieChart {
+        max-width: 174px;
+        max-height: 100px;
+        margin-top: 7px;
+    }
+
+    .col-lg-8 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 60.666667%;
+        flex: 0 0 60.666667%;
+        max-width: 60.666667%;
+    }
+
+    .col-lg-5 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 30.222227%;
+        flex: 0 0 30.222227%;
+        max-width: 30.222227%;
+        margin-top: 0;
+    }
+
+    .col-lg-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 39.333333%;
+        flex: 0 0 39.333333%;
+        max-width: 39.333333%;
+    }
+
+    .col-lg-2 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 18.333333%;
+        flex: 0 0 18.333333%;
+        max-width: 18.333333%;
+    }
+
+    .col-lg-1 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 11.333333%;
+        flex: 0 0 11.333333%;
+        max-width: 11.333333%;
+    }
+
+    .col-lg-1.box2 {
+        margin-right: 0;
+    }
+
+    .box2,
+    .box3 {
+        margin-left: 1.222223%;
+        margin-top: 0;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        transition: 0.3s;
+        background-color: #eee;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 40px;
+        font-size: 1rem;
+    }
+
+    .tablinks.last::after {
+        transition: 0.3s;
+        border-bottom: 47px solid #eee;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 40px;
+    }
+
+    .tablinks.active::after {
+        transition: 0.3s;
+        border-bottom: 47px solid #fff;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 40px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        background-color: #ddd;
+    }
+
+    .tab button:hover::after {
+        border-bottom: 47px solid #ddd;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 40px;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+        background-color: #fff;
+    }
+
+    .tab button.active::after {
+        border-bottom: 47px solid #fff;
+        border-right: 25px solid transparent;
+        position: absolute;
+        content: '';
+        margin-top: -14px;
+        margin-left: 40px;
+    }
+}

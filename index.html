@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/select.css">
+    <!-- <link rel="stylesheet" href="/css/responsive.css"> -->
+    <link rel="stylesheet" type="text/css" href="./css/data-table.css">
+
+    <!-- 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" rel="stylesheet" /> 
+    -->
+
+</head>
+
+<body>
+
+    <header class="navbar flex-column header">
+        <img class="logo" src="https://wiki.rdkcentral.com/download/attachments/360449/atl.site.logo" />
+        <span class="box_text">RDK Services Test Execution Summary And Report</span>
+    </header>
+    <!-- header end -->
+    <div class="container-fluid">
+        <div class="row boxes-container">
+            <div class="col-md-12 col-lg-5 box box1">
+                <h6 class="device-info-title">Device Info</h6>
+                <div class="row device-details-box">
+                    <div class="col-md-8 col-lg-8 left">
+                        <p><span class="lable">Device Name:</span><span class="lable-text" id="deviceName"></span></p>
+                        <p><span class="lable">IP Address:</span><span class="lable-text" id="ipAddress"></span></p>
+                        <p><span class="lable">Image Name:</span><span class="lable-text" id="imageName"></span></p>
+                    </div>
+                    <div class="col-md-4 col-lg-4 right">
+                        <p><span class="lable">Yocto Version:</span><span class="lable-text" id="yoctoVersion"></span></p>
+                        <p><span class="lable">Update Time:</span><span class="lable-text" id="uptime"></span></p>
+                        <p><span class="lable">Execution Time:</span><span class="lable-text" id="executionTime">142</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-1 box box2">
+                <div class="centered">
+                    <p id="total" style="color: #6460C1;"></p>
+                    <span >Total</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-1 box box2">
+                <div class="centered">
+                    <p id="passed" style="color: #5BC866;"></p>
+                    <span >Passed</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-1 box box2">
+                <div class="centered">
+                    <p id="failed" style="color: #F87878;"></p>
+                    <span >Failed</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-1 box box2 no-rm">
+                <div class="centered">
+                    <p id="na" style=" color: #FFB237;"></p>
+                    <span >NA</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-2 box box3" id="pieChartBox">
+                <canvas id="pieChart"></canvas>
+
+            </div>
+        </div>
+
+
+        <div class="tab">
+            <button class="tablinks" id="defaultOpen" onclick="openTab(event, 'Execution_Details')">Execution
+                Summary</button>
+            <button class="tablinks" onclick="openTab(event, 'Test_Case_Details')">Test Case Details</button>
+            <button class="tablinks last" onclick="openTab(event, 'Detailed_View')">Detailed View</button>
+        </div>
+
+        <div id="Execution_Details" class="tabcontent">
+            <h3 class="move-left">Execution Summary</h3>
+            <div>
+                <!--    <div>
+                    <label><input type="checkbox" id="dataset1" checked> Passed</label>
+                    <label><input type="checkbox" id="dataset2" checked> Failed</label>
+                    <label><input type="checkbox" id="dataset3" checked> NA</label>
+                </div>-->
+                <div class="column-right">
+                    <div id="myStackedBarChartCount">
+                    </div>
+                    <div class="datetime">Date & Time: <span id="datetime"></span></div>
+                </div>
+
+
+                <canvas width="400" height="100" id="stackedChartID"></canvas>
+            </div>
+        </div>
+
+
+        <div id="Test_Case_Details" class="tabcontent">
+            <div class="plugins">
+                <h3 id="plugins1">Plugin:</h3>
+                <select class="services-select" name="services">
+                    <!-- Options will be populated dynamically using JavaScript -->
+                </select>
+
+                <!--  -->
+
+                <!--  -->
+            </div>
+
+            <div class="outer-box ">
+                <div class="tc-tab">
+                    <h3>Test Case</h3>
+                    <div class="tc-box">
+
+                        <button class="tabClinks success" id="tcDetails1"
+                            onclick="openTabContent(event, 'TCDetails1')">CB_01_Cobalt_launch_Youtube_URL</button>
+                        <button class="tabClinks failed"
+                            onclick="openTabContent(event, 'TCDetails2')">CB_01_Cobalt_State_Changed_Event</button>
+                        <button class="tabClinks success"
+                            onclick="openTabContent(event, 'TCDetails3')">CB_-1_Cobalt_Set_And_Get_Accessibility_settings</button>
+                        <button class="tabClinks success"
+                            onclick="openTabContent(event, 'TCDetails4')">CB_01_launch_Youtube_URL</button>
+                    </div>
+                </div>
+                <div class="dtabcontent" id="TCDetails1">
+                    <div class="tc-tab">
+                        <h3>Test Case Details</h3>
+                        <div class="tc-box details">
+                            <p><span class="left">Testcase ID</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Test Object</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Test Type</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Test case prerequisities</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Test case Result</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Serial Number</span>: <span class="right">xxxxxx</span></p>
+                        </div>
+                    </div>
+                    <div class="tc-tab last">
+                        <h3>Test Case Steps</h3>
+                        <div class="tc-box testcase-steps">
+                            <p><span class="left">Step Number</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">API</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Input Parameter</span>:
+                            <table>
+                                <tr>
+                                    <td>xxxxxx</td>
+                                    <td>xxxxxx</td>
+                                </tr>
+                            </table>
+                            </p>
+                            <p><span class="left">Expected output</span>:
+                            <table>
+                                <tr>
+                                    <td>xxxxxx</td>
+                                    <td>xxxxxx</td>
+                                </tr>
+                                <tr>
+                                    <td>xxxxxx</td>
+                                    <td>xxxxxx</td>
+                                </tr>
+                            </table>
+                            </p>
+                            <p><span class="left">API Response</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Result</span>: <span class="right">xxxxxx</span></p>
+                            <p><span class="left">Step Number</span>: <span class="right">xxxxxx</span></p>
+                        </div>
+                    </div>
+                </div>
+<!-- DT tab 1 ends -->
+<div class="dtabcontent" id="TCDetails2">
+    <div class="tc-tab">
+        <h3>Test Case Details 2</h3>
+        <div class="tc-box details">
+            <p><span class="left">Testcase ID</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Test Object</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Test Type</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Test case prerequisities</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Test case Result</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Serial Number</span>: <span class="right">xxxxxx</span></p>
+        </div>
+    </div>
+    <div class="tc-tab last">
+        <h3>Test Case Steps 2 </h3>
+        <div class="tc-box testcase-steps">
+            <p><span class="left">Step Number</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">API</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Input Parameter</span>:
+            <table>
+                <tr>
+                    <td>xxxxxx</td>
+                    <td>xxxxxx</td>
+                </tr>
+            </table>
+            </p>
+            <p><span class="left">Expected output</span>:
+            <table>
+                <tr>
+                    <td>xxxxxx</td>
+                    <td>xxxxxx</td>
+                </tr>
+                <tr>
+                    <td>xxxxxx</td>
+                    <td>xxxxxx</td>
+                </tr>
+            </table>
+            </p>
+            <p><span class="left">API Response</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Result</span>: <span class="right">xxxxxx</span></p>
+            <p><span class="left">Step Number</span>: <span class="right">xxxxxx</span></p>
+        </div>
+    </div>
+</div>
+<!-- DT tab 2 ends -->
+            </div>
+        </div>
+
+
+        <div id="Detailed_View" class="tabcontent">
+            <h3>Detailed View</h3>
+            <div>
+                <!-- <table id="dynamic-table" class="display nowrap" style="width:100%"> -->
+                <table id="example" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Plugin</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>NA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- container fluid end -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    
+    <script src="./js/app.js"></script>
+    
+</body>
+
+</html>

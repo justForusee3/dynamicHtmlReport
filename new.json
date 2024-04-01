@@ -1,0 +1,143 @@
+[
+    {
+      "Execution Details": [
+        {
+          "UserPreferences": [
+            {
+              "name": "UserPreferences_SetAndGet_UI_Language",
+              "data": {
+                "Test Case ID": "UP_01",
+                "Test Case Name": "UserPreferences_SetAndGet_UI_Language",
+                "Test Objective": "Check if able to set and get the user preferred UI language",
+                "Test Type": "Positive",
+                "TestCase Prerequisites": "None",
+                "Test steps": [
+                  {
+                    "Step Number": 1,
+                    "API": "org.rdk.UserPreferences.1.setUILanguage",
+                    "Input Parameters": {
+                      "ui_language": "US_en"
+                    },
+                    "Expected Output": {
+                      "success": true
+                    },
+                    "Api Response": {
+                      "success": true
+                    },
+                    "Step 1 Result": "SUCCESS"
+                  },
+                  {
+                    "Step Number": 2,
+                    "API": "org.rdk.UserPreferences.1.getUILanguage",
+                    "Expected Output": {
+                      "ui_language": "US_en",
+                      "success": true
+                    },
+                    "Api Response": {
+                      "ui_language": "US_en",
+                      "success": true
+                    },
+                    "Step 2 Result": "SUCCESS"
+                  }
+                ],
+                "Test Case Result": "SUCCESS",
+                "Serial Number": 1
+              }
+            }
+          ],
+          "DeviceInfo": [
+            {
+              "name": "DeviceInfo_Get_All_System_Info",
+              "data": {
+                "Test Case ID": "DI_01",
+                "Test Case Name": "DeviceInfo_Get_All_System_Info",
+                "Test Objective": "To Get the system general information",
+                "Test Type": "Positive",
+                "TestCase Prerequisites": "None",
+                "Test steps": [
+                  {
+                    "Step Number": 1,
+                    "API": "DeviceInfo.1.systeminfo",
+                    "Input Parameters": "",
+                    "Expected Output": "NOT_EMPTY",
+                    "Api Response": {
+                      "version": "2.1.#R2-v1.12",
+                      "uptime": 584,
+                      "totalram": 2002913,
+                      "freeram": 1861747,
+                      "totalswap": 0,
+                      "freeswap": 0,
+                      "devicename": "raspberrypi4-64-rdk-android-mc",
+                      "cpuload": "20",
+                      "cpuloadavg": {
+                        "avg1min": 104416,
+                        "avg5min": 111616,
+                        "avg15min": 65792
+                      },
+                      "serialnumber": "OE2DrdE4wp",
+                      "time": "Fri, 29 Mar 2024 10:49:19 "
+                    },
+                    "Step 1 Result": "SUCCESS"
+                  }
+                ],
+                "Test Case Result": "SUCCESS",
+                "Serial Number": 1
+              }
+            },
+            {
+              "name": "DeviceInfo_Get_All_Network_Interfaces",
+              "data": {
+                "Test Case ID": "DI_02",
+                "Test Case Name": "DeviceInfo_Get_All_Network_Interfaces",
+                "Test Objective": "To Get all network interface addresses",
+                "Test Type": "Positive",
+                "TestCase Prerequisites": "None",
+                "Test steps": [
+                  {
+                    "Step Number": 1,
+                    "API": "DeviceInfo.1.addresses",
+                    "Input Parameters": "",
+                    "Expected Output": "NOT_EMPTY",
+                    "Api Response": {
+                      "name": "lo",
+                      "mac": "00:00:00:00:00:00",
+                      "ip": [
+                        "127.0.0.1"
+                      ]
+                    },
+                    "Step 1 Result": "SUCCESS"
+                  }
+                ],
+                "Test Case Result": "SUCCESS",
+                "Serial Number": 2
+              }
+            },
+            {
+              "name": "DeviceInfo_Get_SocketInfo",
+              "data": {
+                "Test Case ID": "DI_03",
+                "Test Case Name": "DeviceInfo_Get_SocketInfo",
+                "Test Objective": "To Get the system socket information",
+                "Test Type": "Positive",
+                "TestCase Prerequisites": "None",
+                "Test steps": [
+                  {
+                    "Step Number": 1,
+                    "API": "DeviceInfo.1.socketinfo",
+                    "Input Parameters": "",
+                    "Expected Output": "NOT_EMPTY",
+                    "Api Response": {
+                      "runs": 1790
+                    },
+                    "Step 1 Result": "SUCCESS"
+                  }
+                ],
+                "Test Case Result": "SUCCESS",
+                "Serial Number": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+]
